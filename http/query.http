@@ -1,0 +1,21 @@
+### Query example #1
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"prompt": "What is Paris exact population as of January 2025?",
+	"scrapeUrls": [
+		"https://en.wikipedia.org/wiki/Paris"
+	]
+}
+
+### Query example #2
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"prompt": "At what time is the discount price?",
+	"scrapeUrls": [
+		"https://api-docs.deepseek.com/quick_start/pricing/"
+	]
+}
