@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { SupportedProviders } from 'src/core/constants/providers';
-import { getPrompt } from 'src/core/utils/prompt';
+import { SupportedProviders } from '../../core/constants/providers';
+import { getPrompt } from '../../core/utils/prompt';
 import { AIHandler } from './AIHandler';
 import { processContext } from './context';
 import { processExamples } from './examples';

@@ -1,5 +1,5 @@
-import { downloadFiles } from 'src/core/utils/downloader';
-import { getContentFromUrl } from 'src/core/utils/scrapper';
+import { downloadFiles } from '../../core/utils/downloader';
+import { getContentFromUrl } from '../../core/utils/scrapper';
 
 export const getContentFromFileUrl = async (url: string) => {
 	const files = await downloadFiles([url]);

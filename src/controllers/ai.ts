@@ -1,4 +1,4 @@
-import { query } from 'src/core/handlers/Query';
+import { query } from '../core/handlers/Query';
 
 export const queryController = async (req: any, res: any) => {
 	try {
