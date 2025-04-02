@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { JSDOM } from 'jsdom';
 import puppeteer from 'puppeteer';
 
@@ -15,7 +14,7 @@ const basicScrape = async (url: string) => {
 		.replaceAll('\t', ' ');
 
 	// save content to a file before processing
-	fs.writeFileSync('content.txt', content);
+	// fs.writeFileSync('content.txt', content);
 
 	return content;
 };
@@ -44,7 +43,7 @@ export const getContentFromUrl = async (url: string, approach = 'headless') => {
 	});
 
 	// Save content to a file before processing
-	fs.writeFileSync('temp/content.txt', content ?? '');
+	// fs.writeFileSync('temp/content.txt', content ?? '');
 
 	await browser.close();
 	return content;

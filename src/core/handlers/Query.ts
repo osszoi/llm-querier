@@ -40,7 +40,7 @@ export const query = async ({
 		examples
 	});
 
-	if (true) {
+	if (false) {
 		// manually for testing
 		// Save prompt to temp folder
 		fs.writeFileSync('temp/prompt.txt', enhancedPrompt);
