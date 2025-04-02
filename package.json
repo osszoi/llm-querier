@@ -1,13 +1,20 @@
 {
   "name": "llm-querier",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "files": [
     "build/**/*"
   ],
+  "exports": {
+    ".": {
+      "require": "./build/index.js",
+      "import": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
   "scripts": {
     "start": "npx nodemon",
     "build": "tsc"
