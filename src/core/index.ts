@@ -14,3 +14,7 @@ export * from './utils/scrapper';
 
 // Export all constants
 export * from './constants/providers';
+export { query };
+
+// Direct exports for easier access
+import { query } from './handlers/Query';

@@ -1,13 +1,12 @@
 {
   "name": "llm-querier",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
-  "main": "build/core/index.js",
-  "types": "build/core/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "type": "module",
   "files": [
-    "build/core/**/*",
-    "build/services/**/*"
+    "build/**/*"
   ],
   "scripts": {
     "start": "npx nodemon",
