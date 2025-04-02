@@ -1,6 +1,6 @@
 {
   "name": "llm-querier",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "build/core/index.js",
   "types": "build/core/index.d.ts",
