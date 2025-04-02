@@ -11,8 +11,7 @@
   ],
   "scripts": {
     "start": "npx nodemon",
-    "build": "tsc",
-    "publish": "npm publish"
+    "build": "tsc"
   },
   "author": "Eduardo Lorenzo (ejlorenzo19@gmail.com)",
   "license": "MIT",
