@@ -1,9 +1,6 @@
 import fs from 'fs';
 
-export const downloadFile = async (
-	url: string,
-	baseOutputPath = './temp  '
-) => {
+export const downloadFile = async (url: string, baseOutputPath = './temp') => {
 	const response = await fetch(url);
 	const blob = await response.blob();
 	const fileName = url.split('/').pop();

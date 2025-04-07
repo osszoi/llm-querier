@@ -19,3 +19,14 @@ Content-Type: application/json
 		"https://api-docs.deepseek.com/quick_start/pricing/"
 	]
 }
+
+### Query example #3
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"prompt": "What is the title of point 1.4 in the document?",
+	"fileUrls": [
+		"https://storage.googleapis.com/storage.dawere.com/topics/United%20States%20History/9HIS212RA1-EN.pdf"
+	]
+}

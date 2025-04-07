@@ -1,9 +1,16 @@
+import fs from 'fs';
+import { extractTextFromPDF } from 'src/services/ai/pdfParser';
 import { downloadFiles } from '../../core/utils/downloader';
 import { getContentFromUrl } from '../../core/utils/scrapper';
 
 export const getContentFromFileUrl = async (url: string) => {
 	const files = await downloadFiles([url]);
-	return files[0];
+	const buffer = fs.readFileSync(files[0]);
+	const text = await extractTextFromPDF(buffer);
+
+	console.log(text);
+
+	return text;
 };
 
 export const getContextFromUrl = async (url: string) => {
