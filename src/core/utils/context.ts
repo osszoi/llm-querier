@@ -8,8 +8,6 @@ export const getContentFromFileUrl = async (url: string) => {
 	const buffer = fs.readFileSync(files[0]);
 	const text = await extractTextFromPDF(buffer);
 
-	console.log(text);
-
 	return text;
 };
 

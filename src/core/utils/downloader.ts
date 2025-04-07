@@ -1,6 +1,13 @@
 import fs from 'fs';
+import os from 'os';
 
-export const downloadFile = async (url: string, baseOutputPath = './temp') => {
+// system temp folder
+const tempFolder = os.tmpdir();
+
+export const downloadFile = async (
+	url: string,
+	baseOutputPath = tempFolder
+) => {
 	const response = await fetch(url);
 	const blob = await response.blob();
 	const fileName = url.split('/').pop();
@@ -9,10 +16,7 @@ export const downloadFile = async (url: string, baseOutputPath = './temp') => {
 	return outputPath;
 };
 
-export const downloadFiles = async (
-	urls: string[],
-	baseOutputPath = './temp'
-) => {
+export const downloadFiles = async (urls: string[], baseOutputPath = tempFolder) => {
 	const blobs = await Promise.all(
 		urls.map((url) => downloadFile(url, baseOutputPath))
 	);
