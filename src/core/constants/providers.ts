@@ -1,3 +1,4 @@
 export enum SupportedProviders {
-	DeepSeek = 'deepseek'
+	DeepSeek = 'deepseek',
+	Google = 'google'
 }

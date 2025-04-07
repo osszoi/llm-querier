@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { SupportedProviders } from '../../core/constants/providers';
 import { getPrompt } from '../../core/utils/prompt';
 import { AIHandler } from './AIHandler';
@@ -40,13 +39,7 @@ export const query = async ({
 		examples
 	});
 
-	if (false) {
-		// manually for testing
-		// Save prompt to temp folder
-		fs.writeFileSync('temp/prompt.txt', enhancedPrompt);
-	}
-
 	const response = await handler.query(enhancedPrompt);
 
-	return response.choices[0].message.content.trim();
+	return response;
 };

@@ -1,8 +1,18 @@
+## DeepSeek
+# @model = deepseek-chat
+# @provider = deepseek
+
+## Google
+@model = gemini-2.0-flash-thinking-exp-01-21
+@provider = google
+
 ### Query example #1
 POST http://localhost:8082/ai/query
 Content-Type: application/json
 
 {
+	"model": "{{model}}",
+	"provider": "{{provider}}",
 	"prompt": "What is Paris exact population as of January 2025?",
 	"scrapeUrls": [
 		"https://en.wikipedia.org/wiki/Paris"
@@ -14,6 +24,8 @@ POST http://localhost:8082/ai/query
 Content-Type: application/json
 
 {
+	"model": "{{model}}",
+	"provider": "{{provider}}",
 	"prompt": "At what time is the discount price?",
 	"scrapeUrls": [
 		"https://api-docs.deepseek.com/quick_start/pricing/"
@@ -25,6 +37,8 @@ POST http://localhost:8082/ai/query
 Content-Type: application/json
 
 {
+	"model": "{{model}}",
+	"provider": "{{provider}}",
 	"prompt": "What is the title of point 1.4 in the document?",
 	"fileUrls": [
 		"https://storage.googleapis.com/storage.dawere.com/topics/United%20States%20History/9HIS212RA1-EN.pdf"
