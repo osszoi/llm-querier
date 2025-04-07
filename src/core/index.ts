@@ -1,3 +1,6 @@
+// Direct exports for easier access
+import { query } from './handlers/Query';
+
 // Export all handlers
 export * from './handlers/AIHandler';
 export * from './handlers/context';
@@ -14,7 +17,6 @@ export * from './utils/scrapper';
 
 // Export all constants
 export * from './constants/providers';
-export { query };
 
-// Direct exports for easier access
-import { query } from './handlers/Query';
+// Export the query function directly
+export { query };

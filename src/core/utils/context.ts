@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { extractTextFromPDF } from 'src/services/ai/pdfParser';
-import { downloadFiles } from '../../core/utils/downloader';
-import { getContentFromUrl } from '../../core/utils/scrapper';
+import { extractTextFromPDF } from '../../services/ai/pdfParser';
+import { downloadFiles } from './downloader';
+import { getContentFromUrl } from './scrapper';
 
 export const getContentFromFileUrl = async (url: string) => {
 	const files = await downloadFiles([url]);
