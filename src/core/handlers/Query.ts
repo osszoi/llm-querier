@@ -18,15 +18,19 @@ interface Body {
 
 export const query = async ({
 	prompt,
-	model = 'deepseek-chat',
-	provider = SupportedProviders.DeepSeek,
+	model,
+	provider,
 	images = [], // TBI
 	scrapeUrls = [],
 	fileUrls = [],
 	examples: _examples = [],
 	context: _context = []
 }: Body): Promise<string> => {
-	const handler = new AIHandler(provider, model);
+	// env provider and model
+	const envProvider = process.env.PROVIDER as SupportedProviders;
+	const envModel = process.env.MODEL;
+
+	const handler = new AIHandler(provider || envProvider, model || envModel);
 
 	const context: any[] = processContext(_context);
 	const references: any[] = await processReferences({ scrapeUrls, fileUrls });
@@ -39,7 +43,7 @@ export const query = async ({
 		examples
 	});
 
-	const response = await handler.query(enhancedPrompt);
+	const response = await handler.query(enhancedPrompt, images);
 
 	return response;
 };

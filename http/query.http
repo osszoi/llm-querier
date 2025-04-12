@@ -44,3 +44,28 @@ Content-Type: application/json
 		"https://storage.googleapis.com/storage.dawere.com/topics/United%20States%20History/9HIS212RA1-EN.pdf"
 	]
 }
+
+
+### test
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"model": "{{model}}",
+	"provider": "{{provider}}",
+	"prompt": "Que se dice aqui de la tactica?",
+	"fileUrls": [
+		"https://storage.googleapis.com/storage.dawere.com/newBE%2FsourceImages%2F593240a1-84f6-4771-8caf-f4a9a9da7fbc.pdf"
+	]
+}
+
+### Image
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"model": "{{model}}",
+	"provider": "{{provider}}",
+	"prompt": "What model and color is this car? where is it?",
+	"images": ["https://images.ecestaticos.com/wb5YEYVsYJBCsOxoXg1uUG8a8lo=/0x157:2273x1434/1338x752/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F2f2%2Fe05%2F3d3%2F2f2e053d3200c826f0d514cfe6981282.jpg"]
+}

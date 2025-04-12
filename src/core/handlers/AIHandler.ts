@@ -1,6 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 import OpenAI from 'openai';
 import { SupportedProviders } from '../constants/providers';
+import { processImagesForGoogle } from '../utils/images';
 import { getProviderConfig } from '../utils/providers';
 
 export class AIHandler {
@@ -8,9 +9,13 @@ export class AIHandler {
 	api: any;
 
 	constructor(
-		private readonly provider: SupportedProviders,
-		private readonly model: string
+		private readonly provider?: SupportedProviders,
+		private readonly model?: string
 	) {
+		if (!provider || !model) {
+			throw new Error('Provider and model are required');
+		}
+
 		this.provider = provider;
 		this.model = model;
 
@@ -25,8 +30,12 @@ export class AIHandler {
 		}
 	}
 
-	async query(prompt: string) {
+	async query(prompt: string, images: string[] = []) {
 		if (this.provider === SupportedProviders.DeepSeek) {
+			if (images.length > 0) {
+				console.error('DeepSeek images are not implemented yet');
+			}
+
 			const response = await this.api.chat.completions.create({
 				model: this.model,
 				messages: [{ role: 'user', content: prompt }]
@@ -34,9 +43,11 @@ export class AIHandler {
 
 			return response.choices[0].message.content.trim();
 		} else if (this.provider === SupportedProviders.Google) {
+			const imageParts = await processImagesForGoogle(images);
+
 			const response = await this.api.models.generateContent({
-				model: 'gemini-2.0-flash',
-				contents: prompt
+				model: this.model,
+				contents: [prompt, ...imageParts]
 			});
 
 			return response.text;
