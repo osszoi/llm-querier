@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { SupportedProviders } from '../constants/providers';
 import { processImagesForGoogle } from '../utils/images';
 import { getProviderConfig } from '../utils/providers';
+import { processVideosForGoogle } from '../utils/videos';
 
 export class AIHandler {
 	config: any;
@@ -30,7 +31,7 @@ export class AIHandler {
 		}
 	}
 
-	async query(prompt: string, images: string[] = []) {
+	async query(prompt: string, images: string[] = [], videos: string[] = []) {
 		if (this.provider === SupportedProviders.DeepSeek) {
 			if (images.length > 0) {
 				console.error('DeepSeek images are not implemented yet');
@@ -44,10 +45,11 @@ export class AIHandler {
 			return response.choices[0].message.content.trim();
 		} else if (this.provider === SupportedProviders.Google) {
 			const imageParts = await processImagesForGoogle(images);
+			const videoParts = await processVideosForGoogle(videos);
 
 			const response = await this.api.models.generateContent({
 				model: this.model,
-				contents: [prompt, ...imageParts]
+				contents: [prompt, ...imageParts, ...videoParts]
 			});
 
 			return response.text;

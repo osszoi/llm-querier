@@ -3,7 +3,8 @@
 # @provider = deepseek
 
 ## Google
-@model = gemini-2.0-flash-thinking-exp-01-21
+@model = gemini-2.5-flash-preview-04-17
+# @model = gemini-2.0-flash-thinking-exp-01-21
 @provider = google
 
 ### Query example #1
@@ -39,23 +40,9 @@ Content-Type: application/json
 {
 	"model": "{{model}}",
 	"provider": "{{provider}}",
-	"prompt": "What is the title of point 1.4 in the document?",
+	"prompt": "What is the title of point 1.3 in the document?",
 	"fileUrls": [
-		"https://storage.googleapis.com/storage.dawere.com/topics/United%20States%20History/9HIS212RA1-EN.pdf"
-	]
-}
-
-
-### test
-POST http://localhost:8082/ai/query
-Content-Type: application/json
-
-{
-	"model": "{{model}}",
-	"provider": "{{provider}}",
-	"prompt": "Que se dice aqui de la tactica?",
-	"fileUrls": [
-		"https://storage.googleapis.com/storage.dawere.com/newBE%2FsourceImages%2F593240a1-84f6-4771-8caf-f4a9a9da7fbc.pdf"
+		"https://www.unirioja.es/cu/jearansa/1011/ficheros/Tema_1.pdf"
 	]
 }
 
@@ -68,4 +55,17 @@ Content-Type: application/json
 	"provider": "{{provider}}",
 	"prompt": "What model and color is this car? where is it?",
 	"images": ["https://images.ecestaticos.com/wb5YEYVsYJBCsOxoXg1uUG8a8lo=/0x157:2273x1434/1338x752/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F2f2%2Fe05%2F3d3%2F2f2e053d3200c826f0d514cfe6981282.jpg"]
+}
+
+### Video
+POST http://localhost:8082/ai/query
+Content-Type: application/json
+
+{
+	"model": "{{model}}",
+	"provider": "{{provider}}",
+	"prompt": "Generate a summary for this video",
+	"videos": [
+		"asdf.mp4"
+	]
 }

@@ -14,13 +14,15 @@ interface Body {
 	fileUrls?: string[];
 	examples?: string[];
 	context?: string[];
+	videos?: string[];
 }
 
 export const query = async ({
 	prompt,
 	model,
 	provider,
-	images = [], // TBI
+	images = [],
+	videos = [],
 	scrapeUrls = [],
 	fileUrls = [],
 	examples: _examples = [],
@@ -43,7 +45,7 @@ export const query = async ({
 		examples
 	});
 
-	const response = await handler.query(enhancedPrompt, images);
+	const response = await handler.query(enhancedPrompt, images, videos);
 
 	return response;
 };
