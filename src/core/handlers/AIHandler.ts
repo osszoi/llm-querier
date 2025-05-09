@@ -11,7 +11,8 @@ export class AIHandler {
 
 	constructor(
 		private readonly provider?: SupportedProviders,
-		private readonly model?: string
+		private readonly model?: string,
+		private readonly apiKey?: string
 	) {
 		if (!provider || !model) {
 			throw new Error('Provider and model are required');
@@ -20,9 +21,12 @@ export class AIHandler {
 		this.provider = provider;
 		this.model = model;
 
-		this.config = getProviderConfig(provider);
+		this.config = getProviderConfig(provider, apiKey);
 
-		if (this.provider === SupportedProviders.DeepSeek) {
+		if (
+			this.provider === SupportedProviders.DeepSeek ||
+			this.provider === SupportedProviders.OpenAI
+		) {
 			this.api = new OpenAI(this.config);
 		} else if (this.provider === SupportedProviders.Google) {
 			this.api = new GoogleGenAI(this.config);
@@ -32,9 +36,16 @@ export class AIHandler {
 	}
 
 	async query(prompt: string, images: string[] = [], videos: string[] = []) {
-		if (this.provider === SupportedProviders.DeepSeek) {
+		if (
+			this.provider === SupportedProviders.DeepSeek ||
+			this.provider === SupportedProviders.OpenAI
+		) {
 			if (images.length > 0) {
-				console.error('DeepSeek images are not implemented yet');
+				console.error('OpenAI images are not implemented yet');
+			}
+
+			if (videos.length > 0) {
+				console.error('OpenAI videos are not implemented yet');
 			}
 
 			const response = await this.api.chat.completions.create({
