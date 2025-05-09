@@ -15,12 +15,14 @@ interface Body {
 	examples?: string[];
 	context?: string[];
 	videos?: string[];
+	apiKey?: string;
 }
 
 export const query = async ({
 	prompt,
 	model,
 	provider,
+	apiKey,
 	images = [],
 	videos = [],
 	scrapeUrls = [],
@@ -32,7 +34,11 @@ export const query = async ({
 	const envProvider = process.env.PROVIDER as SupportedProviders;
 	const envModel = process.env.MODEL;
 
-	const handler = new AIHandler(provider || envProvider, model || envModel);
+	const handler = new AIHandler(
+		provider || envProvider,
+		model || envModel,
+		apiKey
+	);
 
 	const context: any[] = processContext(_context);
 	const references: any[] = await processReferences({ scrapeUrls, fileUrls });
